@@ -1,0 +1,24 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "Creating a ToDo application using nodejs and express and automating the deployment process using Jenkins",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/warden-04/todo-app.git"
+  },
+  "author": "warden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/warden-04/todo-app/issues"
+  },
+  "homepage": "https://github.com/warden-04/todo-app#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.3"
+  }
+}
