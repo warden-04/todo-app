@@ -12,7 +12,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build Docker image
-                sh 'docker build -t node-app .'
+                sh 'docker build -t tode-app .'
             }
         }
         
