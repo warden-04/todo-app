@@ -4,10 +4,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from GitHub repository to a specific directory
-		dir('/deployment/todo-app') {
+                // Checkout code from GitHub repository
                     git branch: 'main', credentialsId: 'GitHub-Jenkins', url: 'https://github.com/warden-04/todo-app.git'
-		}
             }
         }
         
