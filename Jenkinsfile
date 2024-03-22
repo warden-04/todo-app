@@ -12,18 +12,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build Docker image
-                script {
-                    docker.build('todo-app:latest')
-                }
+                sh 'docker build -t node-app .'
             }
         }
         
         stage('Run Docker Container') {
             steps {
                 // Run Docker container
-                script {
-                    docker.image('todo-app:latest').run('-p 3020:3020', '--name ToDoApp')
-                }
+                sh 'docker run -d --name ToDoApp -p 3020:3020 todo-app'
             }
         }
     }
