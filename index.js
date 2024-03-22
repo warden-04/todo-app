@@ -1,4 +1,4 @@
-//dependencies required for the app
+//dependencies required for the App
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
