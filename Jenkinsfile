@@ -8,6 +8,12 @@ pipeline {
                     git branch: 'main', credentialsId: 'GitHub-Jenkins', url: 'https://github.com/warden-04/todo-app.git'
             }
         }
+
+	stage('Copying code to a specific directory') {
+	    steps {
+		sh 'pwd'
+	    }
+	}
         
 	stage('Removing old Docker Container and Image') {
 	    steps {
