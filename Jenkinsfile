@@ -11,18 +11,30 @@ pipeline {
 
 	stage('Copying code to a specific directory') {
 	    steps {
-		sh 'pwd'
+		sh 'cp -r . /deployment/todo-app'
 	    }
 	}
-        
-	stage('Removing old Docker Container and Image') {
-	    steps {
-		sh '''
-		   docker stop ToDoApp && docker rm ToDoApp
-		   docker image rmi todo-app
-		'''
-	    }
-	}
+
+	stage('Delete Old Docker Container and Image') {
+            steps {
+                script {
+                    // Check if the specific container exists
+                    def containerId = sh(script: "docker ps -aqf name=ToDoApp", returnStdout: true).trim()
+                    // Check if the specific image exists
+                    def imageId = sh(script: "docker images -q todo-app", returnStdout: true).trim()
+
+                    if (containerId && imageId) {
+                        // Delete the specific container
+			sh "docker stop $containerId || true"
+                        sh "docker rm $containerId || true"
+                        // Delete the specific image
+                        sh "docker rmi $imageId || true"
+                    } else {
+                        echo 'No old container or image found'
+                    }
+                }
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
