@@ -9,12 +9,6 @@ pipeline {
             }
         }
 
-	stage('Copying code to a specific directory') {
-	    steps {
-		sh 'cp -r . /deployment/todo-app'
-	    }
-	}
-
 	stage('Delete Old Docker Container and Image') {
             steps {
                 script {
